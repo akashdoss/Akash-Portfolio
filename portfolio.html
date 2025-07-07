@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akash Selvadoss N - Backend Developer Portfolio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    /* Custom Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #1a1a1a;
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
+    .parallax {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      padding: 4rem 1rem;
+    }
+    .parallax::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    .parallax > * {
+      position: relative;
+      z-index: 2;
+    }
+    .card {
+      background: rgba(31, 41, 55, 0.9);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px rgba(59, 130, 246, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 0 30px rgba(59, 130, 246, 0.5);
+    }
+    .progress-bar {
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      height: 100%;
+      border-radius: 9999px;
+      transition: width 1s ease-in-out;
+    }
+    .glow-effect {
+      position: relative;
+      overflow: hidden;
+    }
+    .glow-effect::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(59, 130, 246, 0.2),
+        transparent
+      );
+      transition: 0.6s;
+    }
+    .glow-effect:hover::before {
+      left: 100%;
+    }
+    .navbar {
+      backdrop-filter: blur(10px);
+      background: rgba(17, 24, 39, 0.8);
+    }
+    .project-card {
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .project-card.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      display: none;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #3b82f6;
+      padding: 0.75rem;
+      border-radius: 50%;
+      color: white;
+      display: none;
+      z-index: 1000;
+    }
+    .back-to-top:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar fixed top-0 left-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-white">Akash Selvadoss N</h1>
+      <div class="space-x-4">
+        <a href="#home" class="text-white hover:text-blue-400 transition">Home</a>
+        <a href="#about" class="text-white hover:text-blue-400 transition">About</a>
+        <a href="#projects" class="text-white hover:text-blue-400 transition">Projects</a>
+        <a href="#contact" class="text-white hover:text-blue-400 transition">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Back to Top Button -->
+  <a href="#home" class="back-to-top" id="backToTop">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </a>
+
+  <!-- Home Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center parallax" style="background-image: url('https://source.unsplash.com/random/1920x1080/?tech')">
+    <div class="text-center">
+      <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 animate__animated animate__fadeIn">
+        Akash Selvadoss N
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-300 mb-8">
+        Backend Developer | AI & Data Science Enthusiast
+      </p>
+      <a href="#projects" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition glow-effect">
+        View My Work
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="max-w-7xl mx-auto py-16 px-4 parallax" style="background-image: url('https://source.unsplash.com/random/1920x1080/?abstract')">
+    <h2 class="text-4xl font-bold text-center mb-12 text-white">About Me</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="card glow-effect">
+        <h3 class="text-2xl font-semibold mb-4">Education</h3>
+        <p><strong>B.Tech - AI & Data Science</strong><br>National Engineering College<br>Expected 2026, CGPA: 7.18</p>
+        <p class="mt-4"><strong>Higher Secondary</strong><br>SAV Senior Secondary School<br>2021-2022, 69%</p>
+        <p class="mt-4"><strong>Secondary</strong><br>SAV Senior Secondary School<br>2019-2020, 71%</p>
+      </div>
+      <div class="card glow-effect">
+        <h3 class="text-2xl font-semibold mb-4">Skills</h3>
+        <div class="space-y-4">
+          <div><p>Python</p><div class="w-full bg-gray-700 rounded-full h-2.5"><div class="progress-bar" style="width: 90%"></div></div></div>
+          <div><p>Java</p><div class="w-full bg-gray-700 rounded-full h-2.5"><div class="progress-bar" style="width: 75%"></div></div></div>
+          <div><p>Django</p><div class="w-full bg-gray-700 rounded-full h-2.5"><div class="progress-bar" style="width: 80%"></div></div></div>
+          <div><p>React JS</p><div class="w-full bg-gray-700 rounded-full h-2.5"><div class="progress-bar" style="width: 78%"></div></div></div>
+          <div><p>SQL</p><div class="w-full bg-gray-700 rounded-full h-2.5"><div class="progress-bar" style="width: 85%"></div></div></div>
+          <div><p>HTML</p><div class="w-full bg-gray-700 rounded-full h-2.5"><div class="progress-bar" style="width: 80%"></div></div></div>
+          <div><p>Figma</p><div class="w-full bg-gray-700 rounded-full h-2.5"><div class="progress-bar" style="width: 75%"></div></div></div>
+          <div><p>Power BI</p><div class="w-full bg-gray-700 rounded-full h-2.5"><div class="progress-bar" style="width: 70%"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="card glow-effect">
+        <h3 class="text-2xl font-semibold mb-4">Internship</h3>
+        <p><strong>Software Intern</strong><br>Hudsmer Business Solution<br>Feb 2025 - May 2025</p>
+        <p class="mt-2">Developed and optimized Django REST APIs, focusing on scalability and maintainability. Contributed to backend solutions for client projects, enhancing performance and user experience.</p>
+      </div>
+      <div class="card glow-effect">
+        <h3 class="text-2xl font-semibold mb-4">Internship</h3>
+        <p><strong>Project Engineer</strong><br>Shanmuga AI Technologies Private Limited<br>Oct 2024 - Feb 2025</p>
+        <p class="mt-2">Designed predictive models and optimized data processes for AI and data science projects. Delivered actionable insights through machine learning solutions, driving innovation and efficiency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="max-w-7xl mx-auto py-16 px-4 parallax" style="background-image: url('https://source.unsplash.com/random/1920x1080/?code')">
+    <h2 class="text-4xl font-bold text-center mb-12 text-white">Projects</h2>
+    <div class="flex justify-center mb-8 flex-wrap gap-4">
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition glow-effect filter-btn" data-category="all">All</button>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition glow-effect filter-btn" data-category="ai">AI</button>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition glow-effect filter-btn" data-category="web">Web</button>
+    </div>
+    <div class="project-container grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="project-card" data-category="ai web">
+        <div class="card glow-effect">
+          <h3 class="text-2xl font-semibold mb-4">Medobot: Your Virtual Medical Assistant</h3>
+          <p class="text-base leading-relaxed mb-4">
+            An AI-powered medical assistant built with React.js and Flask, leveraging SambaNova API and LLaMA model for natural language processing. Features text-to-image generation using Nebius API for enhanced user interaction.
+          </p>
+          <a href="#" class="text-blue-400 hover:underline">View Project</a>
+        </div>
+      </div>
+      <div class="project-card" data-category="web">
+        <div class="card glow-effect">
+          <h3 class="text-2xl font-semibold mb-4">Mobile App Synchronization API</h3>
+          <p class="text-base leading-relaxed mb-4">
+            A Django REST API enabling real-time note synchronization for mobile applications. Utilizes timestamp-based tracking for efficient data retrieval and synchronization.
+          </p>
+          <a href="#" class="text-blue-400 hover:underline">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-7xl mx-auto py-16 px-4 parallax" style="background-image: url('https://source.unsplash.com/random/1920x1080/?contact')">
+    <h2 class="text-4xl font-bold text-center mb-12 text-white">Get in Touch</h2>
+    <div class="card glow-effect max-w-lg mx-auto">
+      <p class="text-center mb-4">Interested in collaborating or have a project in mind? Reach out!</p>
+      <div class="space-y-4">
+        <p><strong>Email:</strong> <a href="mailto:akashselvadoss@example.com" class="text-blue-400 hover:underline">akashselvadoss@example.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/akashselvadoss" class="text-blue-400 hover:underline">linkedin.com/in/akashselvadoss</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/akashselvadoss" class="text-blue-400 hover:underline">github.com/akashselvadoss</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-6 text-center">
+    <p class="text-gray-400">&copy; 2025 Akash Selvadoss N. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // ScrollReveal Animations
+    ScrollReveal().reveal('.card', {
+      delay: 200,
+      distance: '20px',
+      origin: 'bottom',
+      duration: 800,
+      easing: 'ease-out'
+    });
+
+    ScrollReveal().reveal('.project-card', {
+      delay: 200,
+      distance: '20px',
+      origin: 'bottom',
+      duration: 800,
+      easing: 'ease-out',
+      interval: 100
+    });
+
+    // GSAP Animations for Home Section
+    gsap.from('.animate__animated', {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2
+    });
+
+    // Project Filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        projectCards.forEach(card => {
+          const cardCategories = card.getAttribute('data-category').split(' ');
+          if (category === 'all' || cardCategories.includes(category)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+
+    // Smooth Scroll for Navbar Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
